@@ -45,7 +45,7 @@ def get_stock_data():
 # if conditions are met, code will run
 def run_program():
     global relative_change
-    if datetime.now().weekday() > 4 and abs(relative_change) >= 5:
+    if datetime.now().weekday() > 4 and abs(relative_change) <= 5:
         return False
     else:
         return True
@@ -89,16 +89,16 @@ def send_SMS():
     """
     print(SMS_text)
     # Sending SMS
-    client = Client(account_sid, auth_token)
-    message = client.messages \
-        .create(
-            body=SMS_text,
-            from_='+19035056220',
-            to='+40728469967'
-        )
-    print(message.status)
+   # client = Client(account_sid, auth_token)
+   # message = client.messages \
+    #    .create(
+    #        body=SMS_text,
+    #        from_='+19035056220',
+    #        to='+40728469967'
+    #    )
+   # print(message.status)
 
-# Format pf SMS
+# the Format of SMS
 """
 TSLA: 🔺2%
 Headline: Were Hedge Funds Right About Piling Into Tesla Inc. (TSLA)?. 
@@ -111,4 +111,4 @@ Brief: We at Insider Monkey have gone over 821 13F filings that hedge funds and 
 get_stock_data()
 if run_program():
     get_news()
-    # send_SMS()
+    send_SMS()
